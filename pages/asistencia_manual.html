@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>IEDEP | Asistencia Manual</title>
+
+<link rel="stylesheet" href="../css/asistencia_manual.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <div class="header">
+
+            <img
+                src="../img/logo.png"
+                alt="IEDEP"
+                class="logo-ieped">
+
+<div class="contenedor-regresar">
+
+<button
+class="btn-dashboard"
+onclick="window.location.href='../portal-rh/dashboard.html'">
+
+🏠 Dashboard
+
+</button>
+
+</div>
+
+            
+            <h2>Asistencia Manual RH</h2>
+
+            <p class="subtitulo">
+                Registro Extraordinario de Asistencias
+            </p>
+
+        </div>
+
+        <label>Colaborador</label>
+
+        <select id="empleado"></select>
+
+        <div class="empleado-info">
+
+    <h3 id="nombreEmpleado">
+        Seleccione un colaborador
+    </h3>
+
+    <p id="uerEmpleado"></p>
+
+</div>
+
+        
+        <label>Fecha de Asistencia</label>
+
+        <input
+            type="date"
+            id="fecha">
+
+        <label>Hora de Asistencia</label>
+
+        <input
+            type="time"
+            id="hora">
+
+        <label>Tipo</label>
+
+        <select id="tipo">
+
+            <option value="ENTRADA">
+                Entrada
+            </option>
+
+            <option value="SALIDA">
+                Salida
+            </option>
+
+        </select>
+
+        <label>Motivo</label>
+
+        <select id="motivo">
+
+            <option>
+                Sin cobertura celular
+            </option>
+
+            <option>
+                Sin internet
+            </option>
+
+            <option>
+                Falla del sistema
+            </option>
+
+            <option>
+                Comisión oficial
+            </option>
+
+            <option>
+                Otro
+            </option>
+
+        </select>
+
+        <label>Evidencia Fotográfica</label>
+
+        <input
+            type="file"
+            id="evidencia"
+            accept="image/*">
+
+        <img
+            id="preview"
+            class="preview hidden">
+
+        <button onclick="guardarAsistencia()">
+            Guardar Asistencia
+        </button>
+
+        <div id="loading"
+             class="loading hidden">
+
+            <div class="spinner"></div>
+
+            <p>Guardando información...</p>
+
+        </div>
+
+    </div>
+
+    <div class="footer-ieped">
+
+        Gobierno del Estado de Puebla · IEDEP
+
+    </div>
+
+</div>
+<!-- MODAL IEDEP -->
+
+<div id="modalOverlay" class="modal-overlay hidden">
+
+    <div class="modal-card">
+
+        <div class="modal-header"></div>
+
+        <div class="modal-content">
+
+            <h3 id="modalTitulo">
+                Registro Exitoso
+            </h3>
+
+            <p id="modalMensaje"></p>
+
+            <button onclick="cerrarModal()">
+                Aceptar
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- SPINNER -->
+
+<div id="spinnerOverlay" class="spinner-overlay hidden">
+
+    <div class="spinner-card">
+
+        <div class="spinner"></div>
+
+        <p>
+            Se está registrando asistencia...
+        </p>
+
+    </div>
+
+</div>    
+
+<script src="https://cdn.jsdelivr.net/npm/exif-js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+<script src="../js/config.js"></script>
+<script src="../js/asistencia_manual.js"></script>
+
+</body>
+
+</html>

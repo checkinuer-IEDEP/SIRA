@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>IEDEP | Incidencias RH</title>
+
+<link rel="stylesheet"
+href="../css/incidencias.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+             <!-- Línea Institucional -->
+        <div class="top-bar"></div>
+
+        <div class="header">
+
+            <img
+            src="../img/logo.png"
+            class="logo-ieped">
+
+            <div class="contenedor-regresar">
+
+                <button
+                class="btn-dashboard"
+                onclick="window.location.href='../dashboard.html'">
+
+                    🏠 Dashboard
+
+                </button>
+
+            </div>
+
+            <h2>
+                Incidencias RH
+            </h2>
+
+            <p class="subtitulo">
+
+                Faltas completas, entradas y salidas pendientes
+
+            </p>
+
+        </div>
+
+        <div class="filtros">
+
+            <input
+            type="date"
+            id="fechaInicio">
+
+            <input
+            type="date"
+            id="fechaFin">
+
+            <button
+            onclick="consultarIncidencias()">
+
+                Consultar
+
+            </button>
+
+        </div>
+
+        <div id="resultado">
+
+        </div>
+
+    </div>
+
+</div>
+
+<div id="spinnerOverlay" class="spinner-overlay hidden">
+    <div class="spinner-card">
+        <div class="spinner"></div>
+        <p id="spinnerTexto">
+            Generando incidencias...
+        </p>
+    </div>
+</div>
+
+<div id="modalOverlay" class="modal-overlay hidden">
+    <div class="modal-card">
+        <div class="modal-header"></div>
+        <div class="modal-content">
+            <h3 id="modalTitulo">Incidencias</h3>
+            <p id="modalMensaje"></p>
+            <button onclick="cerrarModal()">Aceptar</button>
+        </div>
+    </div>
+</div>
+
+<script src="../js/config.js"></script>
+<script src="../js/incidencias.js"></script>
+
+</body>
+
+</html>

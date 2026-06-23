@@ -1,0 +1,122 @@
+:root{
+
+    --vino:#5F1B2D;
+    --vino-hover:#4A1523;
+    --dorado:#CD975D;
+}
+
+body{
+
+    margin:0;
+
+    font-family:'Segoe UI',sans-serif;
+
+    background:
+    linear-gradient(
+    135deg,
+    #F8F3EF,
+    #F2ECE6);
+
+    min-height:100vh;
+}
+
+.container{
+
+    padding:25px;
+}
+
+.topbar{
+
+    background:white;
+
+    border-top:8px solid var(--vino);
+
+    border-radius:18px;
+
+    padding:20px;
+
+    display:flex;
+
+    gap:20px;
+
+    align-items:center;
+
+    box-shadow:
+    0 15px 40px rgba(0,0,0,.10);
+}
+
+.logo-ieped{
+
+    width:180px;
+}
+
+.topbar h1{
+
+    margin:0;
+
+    color:var(--vino);
+}
+
+.topbar p{
+
+    color:#555;
+}
+
+.dashboard-grid{
+
+    margin-top:25px;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(250px,1fr));
+
+    gap:20px;
+}
+
+.card-menu{
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    text-align:center;
+
+    box-shadow:
+    0 8px 25px rgba(0,0,0,.08);
+}
+
+.card-menu:hover{
+
+    transform:translateY(-4px);
+}
+
+.icono{
+
+    font-size:42px;
+
+    margin-bottom:10px;
+}
+
+.card-menu h3{
+
+    color:var(--vino);
+
+    margin:10px 0;
+}
+
+.card-menu p{
+
+    color:#666;
+}
+
+.salir{
+
+    background:#FFE9E9;
+}

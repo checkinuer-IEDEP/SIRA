@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>IEDEP | Portal RH</title>
+
+<link rel="stylesheet" href="../css/login.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <div class="header">
+
+            <img
+                src="../img/logo.png"
+                alt="IEDEP"
+                class="logo-ieped">
+
+            <h2>Portal de Recursos Humanos</h2>
+
+            <p class="subtitulo">
+                Administración Institucional de Asistencias
+            </p>
+
+        </div>
+
+        <label>Usuario</label>
+
+        <input
+            type="text"
+            id="usuario"
+            placeholder="Ingrese su usuario">
+
+        <label>Contraseña</label>
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Ingrese su contraseña">
+
+        <button onclick="login()">
+            Iniciar Sesión
+        </button>
+
+        <div id="loading" class="loading hidden">
+
+            <div class="spinner"></div>
+
+            <p>Validando credenciales...</p>
+
+        </div>
+
+    </div>
+
+    <div class="footer-ieped">
+
+        Gobierno del Estado de Puebla · IEDEP
+
+    </div>
+
+</div>
+<script src="../js/config.js"></script>
+<script src="../js/login.js"></script>
+
+</body>
+
+</html>

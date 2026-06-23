@@ -1,0 +1,227 @@
+:root{
+
+    --vino:#5F1B2D;
+    --vino-hover:#4A1523;
+    --dorado:#CD975D;
+    --blanco:#FFFFFF;
+    --gris:#F6F4F2;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+
+    margin:0;
+
+    font-family:'Segoe UI',sans-serif;
+
+    background:
+    linear-gradient(
+    135deg,
+    #F8F3EF 0%,
+    #F2ECE6 100%);
+
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:20px;
+}
+
+.container{
+
+    width:100%;
+    max-width:500px;
+}
+
+.card{
+
+    background:white;
+
+    border-top:8px solid var(--vino);
+
+    border-radius:18px;
+
+    padding:35px;
+
+    box-shadow:
+    0 15px 40px rgba(0,0,0,.12);
+}
+
+.header{
+
+    text-align:center;
+
+    margin-bottom:25px;
+}
+
+.logo-ieped{
+
+    width:100%;
+    max-width:250px;
+
+    margin-bottom:15px;
+}
+
+.header h2{
+
+    color:var(--vino);
+
+    margin:0;
+
+    font-size:30px;
+}
+
+.subtitulo{
+
+    color:var(--dorado);
+
+    font-size:14px;
+
+    font-weight:600;
+
+    margin-top:8px;
+}
+
+label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    color:var(--vino);
+
+    font-weight:700;
+}
+
+input{
+
+    width:100%;
+
+    padding:14px;
+
+    margin-bottom:18px;
+
+    border-radius:10px;
+
+    border:1px solid #D6D6D6;
+
+    font-size:15px;
+}
+
+input:focus{
+
+    outline:none;
+
+    border-color:var(--vino);
+
+    box-shadow:
+    0 0 0 3px rgba(95,27,45,.10);
+}
+
+button{
+
+    width:100%;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:var(--vino);
+
+    color:white;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+button:hover{
+
+    background:var(--vino-hover);
+}
+
+.loading{
+
+    text-align:center;
+
+    margin-top:20px;
+}
+
+.loading p{
+
+    color:var(--vino);
+
+    font-weight:700;
+}
+
+.spinner{
+
+    width:45px;
+    height:45px;
+
+    margin:auto;
+
+    border:4px solid #EAEAEA;
+
+    border-top:4px solid var(--vino);
+
+    border-radius:50%;
+
+    animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+.hidden{
+
+    display:none;
+}
+
+.footer-ieped{
+
+    text-align:center;
+
+    margin-top:15px;
+
+    color:var(--vino);
+
+    font-size:12px;
+
+    font-weight:600;
+}
+
+@media(max-width:480px){
+
+    .card{
+
+        padding:25px;
+    }
+
+    .header h2{
+
+        font-size:24px;
+    }
+
+    .logo-ieped{
+
+        max-width:220px;
+    }
+}

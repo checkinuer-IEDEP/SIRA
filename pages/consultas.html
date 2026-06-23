@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>IEDEP | Consultas</title>
+
+<link rel="stylesheet" href="../css/consultas.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+     
+        <div class="header">
+
+            <img
+                src="../img/logo.png"
+                class="logo-ieped">
+
+
+<div class="contenedor-regresar">
+
+<button
+class="btn-dashboard"
+onclick="window.location.href='../portal-rh/dashboard.html'">
+
+🏠 Dashboard
+
+</button>
+
+</div>
+
+            
+            <h2>Consulta de Asistencias</h2>
+
+            <p class="subtitulo">
+                Registros Automáticos y Manuales
+            </p>
+
+        </div>
+
+        <div class="filtros">
+
+            <input
+                type="text"
+                id="numero"
+                placeholder="Número de empleado">
+
+            <input
+                type="date"
+                id="fechaInicio">
+
+            <input
+                type="date"
+                id="fechaFin">
+
+            <button onclick="consultar()">
+                Consultar
+            </button>
+
+        </div>
+
+        <div class="acciones">
+
+            <button onclick="exportarExcel()">
+                Exportar Excel
+            </button>
+
+        </div>
+
+        <div class="tabla-container">
+
+            <table id="tablaResultados">
+
+                <thead>
+
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Entrada</th>
+                        <th>Salida</th>
+                        <th>Empleado</th>
+                        <th>Nombre</th>
+                        <th>UER</th>
+                        <th>Origen Entrada</th>
+                        <th>Origen Salida</th>
+                        <th>Puntualidad</th>
+                        <th>Incidencia</th>
+                        <th>Detalle</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div id="spinnerOverlay" class="spinner-overlay hidden">
+    <div class="spinner-card">
+        <div class="spinner"></div>
+        <p id="spinnerTexto">Consultando asistencias...</p>
+    </div>
+</div>
+
+<div id="modalOverlay" class="modal-overlay hidden">
+    <div class="modal-card">
+        <div class="modal-header"></div>
+        <div class="modal-content">
+            <h3 id="modalTitulo">Consulta realizada</h3>
+            <p id="modalMensaje"></p>
+            <button onclick="cerrarModal()">Aceptar</button>
+        </div>
+    </div>
+</div>
+    
+<script src="../js/config.js"></script>
+<script src="../js/consultas.js"></script>
+
+</body>
+
+</html>
