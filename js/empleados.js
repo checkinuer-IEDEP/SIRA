@@ -135,6 +135,14 @@ pintarTabla(
 empleadosGlobal
 );
 
+actualizarResumenEmpleados(
+empleadosGlobal
+);
+
+pintarConteoUER(
+empleadosGlobal
+);
+  
 ocultarSpinner();
 
 })
@@ -474,30 +482,56 @@ document
 .trim()
 .toUpperCase();
 
-if(!texto){
+const uerFiltro =
+document
+.getElementById("filtroUER")
+.value
+.toString()
+.trim()
+.toUpperCase();
 
-pintarTabla(
-empleadosGlobal
-);
-
-return;
-
-}
+const activoFiltro =
+document
+.getElementById("filtroActivo")
+.value
+.toString()
+.trim()
+.toUpperCase();
 
 const filtrados =
 empleadosGlobal.filter(emp=>{
 
+const coincideTexto =
+!texto ||
+(emp.numero || "").toString().toUpperCase().includes(texto) ||
+(emp.nombre || "").toString().toUpperCase().includes(texto) ||
+(emp.rol || "").toString().toUpperCase().includes(texto);
+
+const coincideUER =
+!uerFiltro ||
+(emp.uer || "").toString().trim().toUpperCase() === uerFiltro;
+
+const coincideActivo =
+!activoFiltro ||
+(emp.activo || "").toString().trim().toUpperCase() === activoFiltro;
+
 return (
-  (emp.numero || "").toString().toUpperCase().includes(texto) ||
-  (emp.nombre || "").toString().toUpperCase().includes(texto) ||
-  (emp.uer || "").toString().toUpperCase().includes(texto) ||
-  (emp.activo || "").toString().toUpperCase().includes(texto) ||
-  (emp.rol || "").toString().toUpperCase().includes(texto)
+coincideTexto &&
+coincideUER &&
+coincideActivo
 );
 
 });
 
 pintarTabla(
+filtrados
+);
+
+actualizarResumenEmpleados(
+filtrados
+);
+
+pintarConteoUER(
 filtrados
 );
 
@@ -800,5 +834,91 @@ return;
 }
 
 combo.value = "";
+
+}
+
+function actualizarResumenEmpleados(datos){
+
+const total =
+datos.length;
+
+const activos =
+datos.filter(e=>
+(e.activo || "").toString().trim().toUpperCase() === "SI"
+).length;
+
+const inactivos =
+datos.filter(e=>
+(e.activo || "").toString().trim().toUpperCase() === "NO"
+).length;
+
+document.getElementById("totalColaboradores").innerText =
+total;
+
+document.getElementById("totalActivos").innerText =
+activos;
+
+document.getElementById("totalInactivos").innerText =
+inactivos;
+
+}
+
+function pintarConteoUER(datos){
+
+const contenedor =
+document.getElementById("conteoUER");
+
+const mapa = {};
+
+datos.forEach(emp=>{
+
+const uer =
+(emp.uer || "SIN UER")
+.toString()
+.trim();
+
+if(!mapa[uer]){
+mapa[uer] = 0;
+}
+
+mapa[uer]++;
+
+});
+
+const ranking =
+Object.keys(mapa)
+.map(uer=>({
+uer:uer,
+total:mapa[uer]
+}))
+.sort((a,b)=>b.total-a.total);
+
+let html = "";
+
+ranking.forEach(item=>{
+
+html += `
+
+<div class="uer-chip"
+     onclick="aplicarFiltroUER('${item.uer}')">
+    <span>${item.uer}</span>
+    <strong>${item.total}</strong>
+</div>
+
+`;
+
+});
+
+contenedor.innerHTML =
+html;
+
+}
+
+function aplicarFiltroUER(uer){
+
+document.getElementById("filtroUER").value =
+uer;
+
+filtrarEmpleados();
 
 }
