@@ -191,8 +191,9 @@ emp.numero || "";
 document.getElementById("nombre").value =
 emp.nombre || "";
 
-document.getElementById("uer").value =
-emp.uer || "";
+seleccionarUER(
+emp.uer
+);
 
 document.getElementById("activo").value =
 emp.activo || "SI";
@@ -715,5 +716,37 @@ document
 .getElementById("modalOverlay")
 .classList
 .add("hidden");
+
+}
+
+function seleccionarUER(valor){
+
+const combo =
+document.getElementById("uer");
+
+const uerEmpleado =
+valor
+? valor.toString().trim().toUpperCase()
+: "";
+
+for(let i=0;i<combo.options.length;i++){
+
+const opcion =
+combo.options[i].value
+.toString()
+.trim()
+.toUpperCase();
+
+if(opcion === uerEmpleado){
+
+combo.selectedIndex = i;
+
+return;
+
+}
+
+}
+
+combo.value = "";
 
 }
