@@ -641,22 +641,57 @@ if(!hora){
 hora =
 hora.toString().trim();
 
+/* Si viene como 8:00 */
+if(/^\d{1,2}:\d{2}$/.test(hora)){
+
 const partes =
 hora.split(":");
 
-if(partes.length < 2){
-  return "";
+return partes[0].padStart(2,"0") +
+":" +
+partes[1];
+
 }
 
-const hh =
-partes[0]
-.padStart(2,"0");
+/* Si viene como 09:23 a. m. o 03:23 p. m. */
+hora =
+hora
+.replace("a. m.","AM")
+.replace("p. m.","PM")
+.replace("a.m.","AM")
+.replace("p.m.","PM")
+.replace(/\s/g,"")
+.toUpperCase();
+
+const match =
+hora.match(/^(\d{1,2}):(\d{2})(AM|PM)$/);
+
+if(match){
+
+let hh =
+parseInt(match[1]);
 
 const mm =
-partes[1]
-.padStart(2,"0");
+match[2];
 
-return hh + ":" + mm;
+const periodo =
+match[3];
+
+if(periodo === "PM" && hh < 12){
+  hh += 12;
+}
+
+if(periodo === "AM" && hh === 12){
+  hh = 0;
+}
+
+return hh.toString().padStart(2,"0") +
+":" +
+mm;
+
+}
+
+return "";
 
 }
 
