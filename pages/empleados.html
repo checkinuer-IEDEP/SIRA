@@ -98,15 +98,47 @@
 
         </div>
 
-        <div class="busqueda">
+       <div class="resumen-uer">
 
-            <input type="text"
-                   id="buscador"
-                   placeholder="Buscar por expediente, nombre, UER o rol"
-                   oninput="filtrarEmpleados()">
+    <div class="resumen-box">
+        <h3 id="totalColaboradores">0</h3>
+        <p>Total colaboradores</p>
+    </div>
 
-        </div>
+    <div class="resumen-box">
+        <h3 id="totalActivos">0</h3>
+        <p>Activos</p>
+    </div>
 
+    <div class="resumen-box">
+        <h3 id="totalInactivos">0</h3>
+        <p>Inactivos</p>
+    </div>
+
+</div>
+
+<div class="filtros-empleados">
+
+    <input type="text"
+           id="buscador"
+           placeholder="Buscar por expediente, nombre o rol"
+           oninput="filtrarEmpleados()">
+
+    <select id="filtroUER"
+            onchange="filtrarEmpleados()">
+        <option value="">Todas las UER</option>
+    </select>
+
+    <select id="filtroActivo"
+            onchange="filtrarEmpleados()">
+        <option value="">Todos</option>
+        <option value="SI">Activos</option>
+        <option value="NO">Inactivos</option>
+    </select>
+
+</div>
+
+<div id="conteoUER" class="conteo-uer"></div>
         <div class="tabla-wrapper">
 
             <table id="tablaEmpleados">
