@@ -46,8 +46,14 @@ accion:"listarUER"
 const combo =
 document.getElementById("uer");
 
+const filtroUER =
+document.getElementById("filtroUER");
+
 combo.innerHTML =
 `<option value="">Seleccione UER</option>`;
+
+filtroUER.innerHTML =
+`<option value="">Todas las UER</option>`;
 
 data.forEach(uer=>{
 
@@ -61,6 +67,17 @@ option.textContent =
 uer;
 
 combo.appendChild(option);
+
+const optionFiltro =
+document.createElement("option");
+
+optionFiltro.value =
+uer;
+
+optionFiltro.textContent =
+uer;
+
+filtroUER.appendChild(optionFiltro);
 
 });
 
