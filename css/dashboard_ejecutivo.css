@@ -260,3 +260,50 @@ button:hover{
         grid-template-columns:1fr;
     }
 }
+
+.kpi-card{
+    cursor:pointer;
+    transition:.3s;
+}
+
+.kpi-card:hover,
+.ranking-item:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 22px rgba(0,0,0,.12);
+}
+
+.ranking-item{
+    cursor:pointer;
+}
+
+.detalle-dashboard{
+    margin-top:30px;
+    background:white;
+    border:1px solid #E8DCCF;
+    border-radius:16px;
+    padding:20px;
+    overflow-x:auto;
+}
+
+.detalle-dashboard h3{
+    color:var(--vino);
+    margin-top:0;
+}
+
+.detalle-dashboard table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.detalle-dashboard th{
+    background:var(--vino);
+    color:white;
+    padding:10px;
+    text-align:left;
+}
+
+.detalle-dashboard td{
+    padding:9px;
+    border-bottom:1px solid #eee;
+    font-size:14px;
+}
