@@ -1,6 +1,8 @@
 const API_URL =
 CONFIG.API_URL;
 
+let dashboardData = null;
+
 function consultarDashboard(){
 
 const fechaInicio =
@@ -60,6 +62,8 @@ fechaFin:fechaFin
 
 ocultarSpinner();
 
+dashboardData = data;    
+    
 pintarResumen(data.resumen);
 
 pintarRanking(
@@ -114,11 +118,8 @@ function pintarResumen(resumen){
 document.getElementById("totalRegistros").innerText =
 resumen.totalRegistros;
 
-document.getElementById("totalEntradas").innerText =
-resumen.totalEntradas;
-
-document.getElementById("totalSalidas").innerText =
-resumen.totalSalidas;
+document.getElementById("totalManualEntrada").innerText =
+resumen.totalManualEntrada;
 
 document.getElementById("faltasCompletas").innerText =
 resumen.faltasCompletas;
@@ -151,13 +152,36 @@ return;
 
 }
 
+let categoria = "";
+
+if(id === "uerMasFaltas"){
+  categoria = "faltas";
+}
+
+if(id === "uerRetardosMenores"){
+  categoria = "retardosMenores";
+}
+
+if(id === "uerRetardosMayores"){
+  categoria = "retardosMayores";
+}
+
+if(id === "uerManualEntrada"){
+  categoria = "manualEntrada";
+}
+
+if(id === "uerManualSalida"){
+  categoria = "manualSalida";
+}
+
 let html = "";
 
 datos.slice(0,10).forEach(item=>{
 
 html += `
 
-<div class="ranking-item">
+<div class="ranking-item"
+     onclick="mostrarDetalleUER('${categoria}','${item.uer}')">
     <span>${item.uer}</span>
     <span>${item.total}</span>
 </div>
@@ -205,5 +229,133 @@ function cerrarModal(){
 
 document.getElementById("modalOverlay")
 .classList.add("hidden");
+
+}
+
+
+function mostrarDetalleCategoria(categoria,titulo){
+
+if(!dashboardData || !dashboardData.detalle){
+  return;
+}
+
+let datos =
+dashboardData.detalle[categoria] || [];
+
+mostrarTablaDetalle(
+titulo,
+datos
+);
+
+}
+
+function mostrarDetalleUER(categoria,uer){
+
+if(!dashboardData || !dashboardData.detalle){
+  return;
+}
+
+let datos = [];
+
+if(categoria === "faltas"){
+
+datos =
+[
+  ...dashboardData.detalle.faltasCompletas,
+  ...dashboardData.detalle.faltasEntrada,
+  ...dashboardData.detalle.faltasSalida
+];
+
+}else{
+
+datos =
+dashboardData.detalle[categoria] || [];
+
+}
+
+datos =
+datos.filter(r=>r.uer === uer);
+
+mostrarTablaDetalle(
+uer,
+datos
+);
+
+}
+
+function mostrarTablaDetalle(titulo,datos){
+
+const existente =
+document.getElementById("detalleDashboard");
+
+if(existente){
+  existente.remove();
+}
+
+let html = `
+
+<div id="detalleDashboard" class="detalle-dashboard">
+
+<h3>${titulo}</h3>
+
+<table>
+<thead>
+<tr>
+<th>Fecha</th>
+<th>Empleado</th>
+<th>Nombre</th>
+<th>UER</th>
+<th>Entrada</th>
+<th>Salida</th>
+<th>Puntualidad</th>
+<th>Incidencia</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+
+`;
+
+datos.forEach(r=>{
+
+html += `
+
+<tr>
+<td>${r.fecha || ""}</td>
+<td>${r.numero || ""}</td>
+<td>${r.nombre || ""}</td>
+<td>${r.uer || ""}</td>
+<td>${r.entrada || ""}</td>
+<td>${r.salida || ""}</td>
+<td>${r.puntualidad || ""}</td>
+<td>${r.incidencia || ""}</td>
+<td>${r.detalle || ""}</td>
+</tr>
+
+`;
+
+});
+
+html += `
+
+</tbody>
+</table>
+
+</div>
+
+`;
+
+document
+.querySelector(".card")
+.insertAdjacentHTML(
+"beforeend",
+html
+);
+
+document
+.getElementById("detalleDashboard")
+.scrollIntoView({
+behavior:"smooth"
+});
 
 }
