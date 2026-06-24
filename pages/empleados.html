@@ -1,1 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>IEDEP | Empleados RH</title>
+
+<link rel="stylesheet" href="../css/empleados.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <div class="header">
+
+            <img src="../img/logo.png"
+                 class="logo-ieped">
+
+            <div class="contenedor-regresar">
+
+                <button class="btn-dashboard"
+                        onclick="window.location.href='../dashboard.html'">
+                    🏠 Dashboard
+                </button>
+
+            </div>
+
+            <h2>Empleados RH</h2>
+
+            <p class="subtitulo">
+                Alta, edición y baja lógica de colaboradores
+            </p>
+
+        </div>
+
+        <div class="form-grid">
+
+            <input type="text"
+                   id="numero"
+                   placeholder="Número de expediente">
+
+            <input type="text"
+                   id="nombre"
+                   placeholder="Nombre completo">
+
+            <input type="text"
+                   id="uer"
+                   placeholder="UER">
+
+            <select id="activo">
+                <option value="SI">Activo</option>
+                <option value="NO">Inactivo</option>
+            </select>
+
+            <input type="time"
+                   id="horaEntrada">
+
+            <input type="time"
+                   id="horaSalida">
+
+            <select id="rol">
+                <option value="">Seleccione Rol</option>
+                <option value="Representante">Representante</option>
+                <option value="Tutores o Asesores">Tutores o Asesores</option>
+                <option value="Intendente">Intendente</option>
+                <option value="Auxiliar Administrativo">Auxiliar Administrativo</option>
+                <option value="Vigilante">Vigilante</option>
+            </select>
+
+        </div>
+
+        <div class="acciones">
+
+            <button onclick="guardarEmpleado()">
+                Guardar Nuevo
+            </button>
+
+            <button onclick="actualizarEmpleado()">
+                Actualizar
+            </button>
+
+            <button class="btn-baja"
+                    onclick="desactivarEmpleado()">
+                Dar de Baja
+            </button>
+
+            <button class="btn-limpiar"
+                    onclick="limpiarFormulario()">
+                Limpiar
+            </button>
+
+        </div>
+
+        <div class="busqueda">
+
+            <input type="text"
+                   id="buscador"
+                   placeholder="Buscar por expediente, nombre, UER o rol"
+                   oninput="filtrarEmpleados()">
+
+        </div>
+
+        <div class="tabla-wrapper">
+
+            <table id="tablaEmpleados">
+
+                <thead>
+                    <tr>
+                        <th>Expediente</th>
+                        <th>Nombre</th>
+                        <th>UER</th>
+                        <th>Activo</th>
+                        <th>Entrada</th>
+                        <th>Salida</th>
+                        <th>Rol</th>
+                    </tr>
+                </thead>
+
+                <tbody></tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div id="spinnerOverlay" class="spinner-overlay hidden">
+    <div class="spinner-card">
+        <div class="spinner"></div>
+        <p id="spinnerTexto">Procesando información...</p>
+    </div>
+</div>
+
+<div id="modalOverlay" class="modal-overlay hidden">
+    <div class="modal-card">
+        <div class="modal-header"></div>
+        <div class="modal-content">
+            <h3 id="modalTitulo">Empleados RH</h3>
+            <p id="modalMensaje"></p>
+            <button onclick="cerrarModal()">Aceptar</button>
+        </div>
+    </div>
+</div>
+
+<script src="../js/config.js"></script>
+<script src="../js/empleados.js"></script>
+
+</body>
+
+</html>
