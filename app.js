@@ -157,7 +157,7 @@ async function inicializarSeguridad(){
 
 }
 
-// window.onload = inicializarSeguridad;
+window.onload = inicializarSeguridad;
 
 
 
@@ -426,7 +426,7 @@ function tomarSelfie(stream){
 // =====================================
 
 function registrar(){
-
+ validarTokenLocal();
   fetch(API_URL, {
   method:"POST",
   headers:{
