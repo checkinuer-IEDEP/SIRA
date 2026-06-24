@@ -426,7 +426,11 @@ function tomarSelfie(stream){
 // =====================================
 
 function registrar(){
- validarTokenLocal();
+ 
+  validarTokenLocal();
+console.log("DEVICE ID:", deviceId);
+
+  
   fetch(API_URL, {
   method:"POST",
   headers:{
