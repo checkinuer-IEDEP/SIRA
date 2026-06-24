@@ -1,1 +1,530 @@
+:root{
 
+    --vino:#5F1B2D;
+    --vino-hover:#4A1523;
+    --dorado:#CD975D;
+    --gris:#F8F3EF;
+
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:"Segoe UI",sans-serif;
+
+    background:
+    linear-gradient(
+        135deg,
+        #F8F3EF 0%,
+        #F2ECE6 100%
+    );
+
+    min-height:100vh;
+
+    padding:25px;
+
+}
+
+.container{
+
+    max-width:1550px;
+    margin:auto;
+
+}
+
+.card{
+
+    background:white;
+
+    border-top:8px solid var(--vino);
+
+    border-radius:18px;
+
+    padding:30px;
+
+    box-shadow:
+    0 15px 40px rgba(0,0,0,.12);
+
+}
+
+.header{
+
+    text-align:center;
+
+    margin-bottom:25px;
+
+}
+
+.logo-ieped{
+
+    max-width:270px;
+
+}
+
+.header h2{
+
+    color:var(--vino);
+
+    margin-top:15px;
+
+}
+
+.subtitulo{
+
+    margin-top:8px;
+
+    color:var(--dorado);
+
+    font-weight:bold;
+
+}
+
+.contenedor-regresar{
+
+    display:flex;
+
+    justify-content:center;
+
+    margin-top:15px;
+
+}
+
+.btn-dashboard{
+
+    background:var(--vino);
+
+    color:white;
+
+    border:none;
+
+    padding:12px 20px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+}
+
+.btn-dashboard:hover{
+
+    background:var(--vino-hover);
+
+}
+
+/*==========================
+FORMULARIO
+==========================*/
+
+.form-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:15px;
+
+    margin-top:25px;
+
+}
+
+.form-grid input,
+.form-grid select{
+
+    padding:12px;
+
+    border:1px solid #D9D9D9;
+
+    border-radius:10px;
+
+    font-size:15px;
+
+}
+
+/*==========================
+BOTONES
+==========================*/
+
+.acciones{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+
+    margin-top:25px;
+
+}
+
+.acciones button{
+
+    padding:12px 25px;
+
+    border:none;
+
+    border-radius:10px;
+
+    color:white;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.acciones button:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.acciones button:nth-child(1){
+
+    background:#2E7D32;
+
+}
+
+.acciones button:nth-child(2){
+
+    background:#1565C0;
+
+}
+
+.btn-baja{
+
+    background:#C62828;
+
+}
+
+.btn-limpiar{
+
+    background:#757575;
+
+}
+
+/*==========================
+BUSCADOR
+==========================*/
+
+.busqueda{
+
+    margin-top:30px;
+
+}
+
+.busqueda input{
+
+    width:100%;
+
+    padding:14px;
+
+    border-radius:10px;
+
+    border:1px solid #CCC;
+
+    font-size:15px;
+
+}
+
+/*==========================
+TABLA
+==========================*/
+
+.tabla-wrapper{
+
+    margin-top:25px;
+
+    overflow:auto;
+
+    max-height:600px;
+
+    border-radius:12px;
+
+    border:1px solid #DDD;
+
+}
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+thead{
+
+    position:sticky;
+
+    top:0;
+
+    z-index:10;
+
+}
+
+thead th{
+
+    background:var(--vino);
+
+    color:white;
+
+    padding:14px;
+
+    font-size:14px;
+
+    white-space:nowrap;
+
+}
+
+tbody td{
+
+    padding:12px;
+
+    border-bottom:1px solid #EEE;
+
+    font-size:14px;
+
+}
+
+tbody tr{
+
+    cursor:pointer;
+
+    transition:.20s;
+
+}
+
+tbody tr:hover{
+
+    background:#F9F2ED;
+
+}
+
+/*==========================
+ESTATUS
+==========================*/
+
+.estado-activo{
+
+    color:#2E7D32;
+
+    font-weight:bold;
+
+}
+
+.estado-inactivo{
+
+    color:#C62828;
+
+    font-weight:bold;
+
+}
+
+/*==========================
+SPINNER
+==========================*/
+
+.spinner-overlay{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:100%;
+
+    background:rgba(255,255,255,.85);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:9999;
+
+}
+
+.spinner-card{
+
+    text-align:center;
+
+}
+
+.spinner{
+
+    width:60px;
+
+    height:60px;
+
+    border-radius:50%;
+
+    border:6px solid #DDD;
+
+    border-top:6px solid var(--vino);
+
+    animation:girar 1s linear infinite;
+
+    margin:auto;
+
+}
+
+@keyframes girar{
+
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+/*==========================
+MODAL
+==========================*/
+
+.modal-overlay{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:100%;
+
+    background:rgba(0,0,0,.55);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:99999;
+
+}
+
+.modal-card{
+
+    background:white;
+
+    width:420px;
+
+    border-radius:16px;
+
+    overflow:hidden;
+
+    box-shadow:0 10px 40px rgba(0,0,0,.25);
+
+}
+
+.modal-header{
+
+    height:8px;
+
+    background:var(--vino);
+
+}
+
+.modal-content{
+
+    padding:25px;
+
+    text-align:center;
+
+}
+
+.modal-content h3{
+
+    color:var(--vino);
+
+    margin-bottom:15px;
+
+}
+
+.modal-content p{
+
+    margin-bottom:20px;
+
+}
+
+.modal-content button{
+
+    background:var(--vino);
+
+    color:white;
+
+    border:none;
+
+    padding:12px 25px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+}
+
+/*==========================
+UTILERIAS
+==========================*/
+
+.hidden{
+
+    display:none !important;
+
+}
+
+/*==========================
+RESPONSIVE
+==========================*/
+
+@media(max-width:1100px){
+
+    .form-grid{
+
+        grid-template-columns:
+        repeat(2,1fr);
+
+    }
+
+}
+
+@media(max-width:700px){
+
+    .form-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .acciones{
+
+        flex-direction:column;
+
+    }
+
+}
